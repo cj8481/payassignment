@@ -1,5 +1,6 @@
 package com.kakaopay.recruit.assignment.urlshotening.url;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -8,7 +9,9 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Repository
 @AllArgsConstructor
 public class SequenceRepositoryImpl implements SequenceRepository {
@@ -16,10 +19,15 @@ public class SequenceRepositoryImpl implements SequenceRepository {
 
 	@Override
 	public void initSequence(String key, long initialSequence) {
-		SequenceID sequenceId = new SequenceID();
-		sequenceId.setId(key);
-		sequenceId.setSeq(initialSequence);
-		mongoOperation.insert(sequenceId);
+		Query query = new Query(Criteria.where("_id").is(key).and("seq").ne(initialSequence));
+
+		Update update = new Update();
+		update.setOnInsert("seq", initialSequence);
+		try {
+			mongoOperation.findAndModify(query, update, new FindAndModifyOptions().upsert(true), SequenceID.class);
+		} catch (DuplicateKeyException e) {
+			log.info("key : {}, seq : {} exists", key, mongoOperation.findOne(new Query(Criteria.where("_id").is(key)), SequenceID.class).getSeq());
+		}
 	}
 
 	@Override
