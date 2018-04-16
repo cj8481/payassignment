@@ -9,7 +9,7 @@ public class Base62URLShortener implements URLShortener<Long> {
 	private final int BASE62LENGTH = base62Table.length();
 
 	@Override
-	public String createShorteningURL(Long url, int maxSize) {
+	public String createShorteningURL(Long url) {
 		if (url == 0L) {
 			return String.valueOf(base62Table.charAt(0));
 		}

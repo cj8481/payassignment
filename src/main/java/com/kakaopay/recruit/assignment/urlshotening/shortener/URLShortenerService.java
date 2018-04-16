@@ -42,7 +42,7 @@ public class URLShortenerService {
 	}
 
 	public Mono<ShortURL> getOrCreateShortUrl(String originalUrl) {
-		return defer(() -> repository.findByOriginalUrl(originalUrl))
+		return repository.findByOriginalUrl(originalUrl)
 			.subscribeOn(Schedulers.immediate())
 			.switchIfEmpty(createShortUrl(originalUrl));
 	}
@@ -53,6 +53,7 @@ public class URLShortenerService {
 	}
 
 	private Mono<ShortURL> createShortUrl(String url) {
+		Date createdAt = new Date();
 		return fromCallable(() -> sequenceRepository.getNextSequenceId(ReactiveShortURLRepository.SEQ_NAME))
 			.publishOn(Schedulers.elastic())
 			.publishOn(Schedulers.parallel())
@@ -60,7 +61,7 @@ public class URLShortenerService {
 					.id(id)
 					.originalUrl(url)
 					.shortUrl(urlHostPath + urlShortener.createShorteningURL(id))
-					.createdAt(new Date())
+					.createdAt(createdAt)
 					.build()
 				)
 			.publishOn(Schedulers.elastic())
