@@ -1,6 +1,5 @@
 package com.kakaopay.recruit.assignment.urlshotening.url;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -23,11 +22,7 @@ public class SequenceRepositoryImpl implements SequenceRepository {
 
 		Update update = new Update();
 		update.setOnInsert("seq", initialSequence);
-		try {
-			mongoOperation.findAndModify(query, update, new FindAndModifyOptions().upsert(true), SequenceID.class);
-		} catch (DuplicateKeyException e) {
-			log.info("key : {}, seq : {} exists", key, mongoOperation.findOne(new Query(Criteria.where("_id").is(key)), SequenceID.class).getSeq());
-		}
+		mongoOperation.upsert(query, update, SequenceID.class);
 	}
 
 	@Override
