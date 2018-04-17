@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class Base62SplitShortenerTest {
 	private final Base62URLShortener base62URLShortener = new Base62URLShortener();
-	private Base62SplitShortener sut = new Base62SplitShortener(base62URLShortener, 8);
+	private Base62SplitShortener sut = new Base62SplitShortener(base62URLShortener);
 
 	@Test
 	public void encode() {
