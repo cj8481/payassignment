@@ -4,20 +4,31 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Base62URLShortener implements URLShortener<Long> {
-	public static final String base62Table =
-		"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	private final int BASE62LENGTH = base62Table.length();
+	private static final String BASE_62_STRING = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	public static final char[] BASE_62_TABLE = BASE_62_STRING.toCharArray();
+	public static final int BASE62LENGTH = BASE_62_TABLE.length;
 
 	@Override
-	public String createShorteningURL(Long url) {
-		if (url == 0L) {
-			return String.valueOf(base62Table.charAt(0));
-		}
+	public String encode(Long url) {
+
 		StringBuilder result = new StringBuilder();
-		while (url > 0) {
-			result.append(base62Table.charAt((int) (Long.remainderUnsigned(url, BASE62LENGTH))));
+		 do {
+			result.append(BASE_62_TABLE[(int) Long.remainderUnsigned(url, BASE62LENGTH)]);
 			url = Long.divideUnsigned(url, BASE62LENGTH);
-		}
+		} while (Long.toUnsignedString(url).compareTo("0") > 0);
+
 		return result.toString();
+	}
+
+	@Override
+	public Long decode(String value) {
+		long result = 0;
+		long power = 1;
+		for (int i = 0; i < value.length(); i++) {
+			int digit = BASE_62_STRING.indexOf(value.charAt(i));
+			result += digit * power;
+			power *= BASE62LENGTH;
+		}
+		return result;
 	}
 }

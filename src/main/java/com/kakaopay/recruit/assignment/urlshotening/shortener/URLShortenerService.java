@@ -20,17 +20,17 @@ import reactor.core.scheduler.Schedulers;
 @Slf4j
 @Service
 public class URLShortenerService {
-	private URLShortener<Long> urlShortener;
+	private URLShortener<Long> base62SplitShortener;
 	private ReactiveShortURLRepository repository;
 	private SequenceRepository sequenceRepository;
 	private String urlHostPath;
 
 	public URLShortenerService(
-		URLShortener<Long> urlShortener,
+		URLShortener<Long> base62SplitShortener,
 		ReactiveShortURLRepository repository,
 		SequenceRepository sequenceRepository,
 		@Value("${short.url.host}/") String urlHostPath) {
-		this.urlShortener = urlShortener;
+		this.base62SplitShortener = base62SplitShortener;
 		this.repository = repository;
 		this.sequenceRepository = sequenceRepository;
 		this.urlHostPath = urlHostPath;
@@ -60,7 +60,7 @@ public class URLShortenerService {
 			.map(id -> ShortURL.builder()
 					.id(id)
 					.originalUrl(url)
-					.shortUrl(urlHostPath + urlShortener.createShorteningURL(id))
+					.shortUrl(urlHostPath + base62SplitShortener.encode(id))
 					.createdAt(createdAt)
 					.build()
 				)
