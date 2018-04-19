@@ -14,4 +14,7 @@
 	* View Layer의 경우 큰 의미는 없지만 간단히 Template도 사용할 수 있는 사용하기 익숙한 Template Engine인 Freemarker를 사용하였습니다. 
 * View 페이지 내부의 스크립트는 간단한 vue.js 와 axios를 이용한 Ajax call을 사용 하였고 URL 결과를 출력 및 redirect 할 수 있는 링크를 제공하였습니다.
 * 서버 사이드 테스트는 Unit Test 및 Controller의 경우 Integration 테스트를 작성 하였습니다.
- 
+* 실행은 git clone 이후 
+ * ./gradlew build 로 빌드후에
+ * cd libs 로 폴더 이동후
+ * java -jar payassignment-0.0.1-SNAPSHOT.jar 로 실행해 볼 수 있습니다.
