@@ -9,5 +9,4 @@ import reactor.core.publisher.Mono;
 public interface ReactiveShortURLRepository extends ReactiveCrudRepository<ShortURL, Long> {
 	String SEQ_NAME = "shorturl";
 	Mono<ShortURL> findByOriginalUrl(String url);
-	Mono<ShortURL> findByShortUrl(String url);
 }
