@@ -30,7 +30,7 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-    compile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: "${embeddedMongoDBVersion}"
+    compile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '2.0.3'
     compile('org.springframework.boot:spring-boot-starter-web') {
         exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
     }

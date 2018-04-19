@@ -29,7 +29,7 @@ public class URLShortenerService {
 		URLShortener<Long> base62SplitShortener,
 		ReactiveShortURLRepository repository,
 		SequenceRepository sequenceRepository,
-		@Value("${short.url.host}/") String urlHostPath) {
+		@Value("${short.url.host}") String urlHostPath) {
 		this.base62SplitShortener = base62SplitShortener;
 		this.repository = repository;
 		this.sequenceRepository = sequenceRepository;
@@ -47,9 +47,13 @@ public class URLShortenerService {
 			.switchIfEmpty(createShortUrl(originalUrl));
 	}
 
-	public Mono<String> getOriginalUrl(String shortUrl) {
-		return repository.findByShortUrl(urlHostPath + shortUrl)
+	public Mono<String> getOriginalUrl(String shortUrlPath) {
+		return repository.findById(getShortUrlDecodedId(shortUrlPath))
 			.map(ShortURL::getOriginalUrl);
+	}
+
+	Mono<Long> getShortUrlDecodedId(String shortUrl) {
+		return fromSupplier(() -> base62SplitShortener.decode(shortUrl));
 	}
 
 	private Mono<ShortURL> createShortUrl(String url) {

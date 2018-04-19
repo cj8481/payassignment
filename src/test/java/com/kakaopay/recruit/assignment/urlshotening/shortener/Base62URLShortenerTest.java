@@ -30,6 +30,6 @@ public class Base62URLShortenerTest {
 	 */
 	@Test
 	public void minus_test() {
-		assertThat(sut.decode(sut.encode(-1L))).isEqualTo(-1L);
+		assertThat(sut.decode(sut.encode(Long.MIN_VALUE))).isEqualTo(Long.MIN_VALUE);
 	}
 }

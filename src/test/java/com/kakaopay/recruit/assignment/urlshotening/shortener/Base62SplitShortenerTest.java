@@ -10,22 +10,22 @@ public class Base62SplitShortenerTest {
 
 	@Test
 	public void encode() {
-		assertThat(sut.encode(base62URLShortener.decode("aaaaaaaab"))).isEqualTo("a/aaaaaaab");
+		assertThat(sut.encode(base62URLShortener.decode("aaaaaaaab"))).isEqualTo("/a/aaaaaaab");
 	}
 
 	@Test
 	public void encode_long_length() {
-		assertThat(sut.encode(Long.MIN_VALUE)).isEqualTo("iWi/fIaXiv9k");
+		assertThat(sut.encode(Long.MIN_VALUE)).isEqualTo("/iWi/fIaXiv9k");
 	}
 
 	@Test
 	public void decode_test() {
-		assertThat(sut.decode("a/aaaaaaab")).isEqualTo(base62URLShortener.decode("aaaaaaaab"));
+		assertThat(sut.decode("/a/aaaaaaab")).isEqualTo(base62URLShortener.decode("aaaaaaaab"));
 	}
 
 	@Test
 	public void decode_long_length_test() {
-		assertThat(sut.decode("aaaaaaaa/aaaaaaaa/aaaaaaab")).isEqualTo(base62URLShortener.decode("aaaaaaaaaaaaaaaaaaaaaaab"));
+		assertThat(sut.decode("/aaaaaaaa/aaaaaaaa/aaaaaaab")).isEqualTo(base62URLShortener.decode("aaaaaaaaaaaaaaaaaaaaaaab"));
 	}
 
 }

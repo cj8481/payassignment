@@ -2,6 +2,10 @@ package com.kakaopay.recruit.assignment.urlshotening.shortener;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Base 62 기반의 문자열 변환기 입니다.
+ * 기존의 Base 62 알고리즘과 차이가 있다면 Long 을 활용하되 Unsigned 형태로 최대한 많은 숫자를 포함할 수 있습니다.
+ */
 @Component
 public class Base62URLShortener implements URLShortener<Long> {
 	private static final String BASE_62_STRING = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

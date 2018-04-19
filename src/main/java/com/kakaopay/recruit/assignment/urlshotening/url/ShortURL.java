@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,11 +21,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode(of = "id")
 public class ShortURL {
 	@Id
 	private Long id;
 
-	@Indexed(name = "short_url_index", unique = true)
 	private String shortUrl;
 
 	@Indexed(name = "original_url_index", unique = true)

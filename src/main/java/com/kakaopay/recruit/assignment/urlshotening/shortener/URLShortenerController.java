@@ -1,10 +1,11 @@
 package com.kakaopay.recruit.assignment.urlshotening.shortener;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,14 +24,18 @@ public class URLShortenerController {
 	@PostMapping("/url")
 	@ResponseBody
 	public Mono<ShortURL> createOrGetShortUrl(@RequestParam String url) {
-		return service.getOrCreateShortUrl(url);
+		return service.getOrCreateShortUrl(url).log();
 	}
 
-	@GetMapping("/{shortUrl}")
-	public Mono<ResponseEntity<String>> redirectToOriginalUrl(@PathVariable String shortUrl) {
-		return service.getOriginalUrl(shortUrl)
-			.map(u -> "redirect:" + u)
-			.map(u -> ResponseEntity.ok().body(u))
+	@GetMapping("/createUrl")
+	public String index() {
+		return "createUrl";
+	}
+
+	@GetMapping("/**")
+	public Mono<ResponseEntity<String>> redirectToOriginalUrl(HttpServletRequest request) {
+		return service.getOriginalUrl(request.getRequestURI())
+			.map(u -> ResponseEntity.status(HttpStatus.PERMANENT_REDIRECT).header("location", u).body(""))
 			.defaultIfEmpty(NOT_FOUND)
 			.log()
 			;
