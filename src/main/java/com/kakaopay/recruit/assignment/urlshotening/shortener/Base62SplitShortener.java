@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
  * bitwise 연산을 통해 bit 의 범위를 나누어 시간/머신ID/프로세스ID/카운터 와 같은 방식으로
  * 최대한 회피할 수 있으나 그것 또한 근본적인 중복 방지 해결책은 아니다.
  * 그러므로 가장 최대한 마지막 자리는 8자리를 유지하면서 URL 을 추가로 생성할 수 있는
+ * 아래 클래스 방식으로 작성하였다
  */
 @AllArgsConstructor
 @Component
