@@ -17,6 +17,6 @@ public class SequenceRepositoryTest {
 	@Test
 	public void init_getSequence_test() {
 		repository.initSequence("seq", 0);
-		assertThat(repository.getNextSequenceId("seq")).isEqualTo(1L);
+		assertThat(repository.getNextSequenceId("seq").block()).isEqualTo(1L);
 	}
 }
