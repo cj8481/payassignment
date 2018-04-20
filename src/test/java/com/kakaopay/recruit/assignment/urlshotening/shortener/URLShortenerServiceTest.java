@@ -86,7 +86,7 @@ public class URLShortenerServiceTest {
 		String url = "url";
 		given(repository.findByOriginalUrl(url)).willReturn(Mono.empty());
 		long inputId = 1234L;
-		given(sequenceRepository.getNextSequenceId(ReactiveShortURLRepository.SEQ_NAME)).willReturn(inputId);
+		given(sequenceRepository.getNextSequenceId(ReactiveShortURLRepository.SEQ_NAME)).willReturn(Mono.just(inputId));
 		given(base62SplitShortener.encode(inputId)).willReturn("testUrl");
 
 		ShortURL savedUrl = ShortURL.builder().id(5555L).build();

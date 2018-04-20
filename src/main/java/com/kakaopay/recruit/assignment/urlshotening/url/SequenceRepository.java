@@ -1,6 +1,8 @@
 package com.kakaopay.recruit.assignment.urlshotening.url;
 
+import reactor.core.publisher.Mono;
+
 public interface SequenceRepository {
 	void initSequence(String key, long initialSequence);
-	long getNextSequenceId(String key);
+	Mono<Long> getNextSequenceId(String key);
 }
