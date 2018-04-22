@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.sequence;
+package com.kakaopay.recruit.assignment.urlshortening.sequence;
 
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
 import org.springframework.data.mongodb.core.ReactiveMongoOperations;

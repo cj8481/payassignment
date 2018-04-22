@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.url;
+package com.kakaopay.recruit.assignment.urlshortening.url;
 
 import java.util.Date;
 

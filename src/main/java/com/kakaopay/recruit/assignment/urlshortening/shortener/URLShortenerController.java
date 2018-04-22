@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.shortener;
+package com.kakaopay.recruit.assignment.urlshortening.shortener;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kakaopay.recruit.assignment.urlshotening.url.ShortURL;
+import com.kakaopay.recruit.assignment.urlshortening.url.ShortURL;
 
 import lombok.AllArgsConstructor;
 import reactor.core.publisher.Mono;

@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.shortener;
+package com.kakaopay.recruit.assignment.urlshortening.shortener;
 
 import static reactor.core.publisher.Mono.*;
 
@@ -9,9 +9,9 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.kakaopay.recruit.assignment.urlshotening.url.ReactiveShortURLRepository;
-import com.kakaopay.recruit.assignment.urlshotening.sequence.SequenceRepository;
-import com.kakaopay.recruit.assignment.urlshotening.url.ShortURL;
+import com.kakaopay.recruit.assignment.urlshortening.url.ReactiveShortURLRepository;
+import com.kakaopay.recruit.assignment.urlshortening.sequence.SequenceRepository;
+import com.kakaopay.recruit.assignment.urlshortening.url.ShortURL;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;

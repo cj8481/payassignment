@@ -1,11 +1,10 @@
-package com.kakaopay.recruit.assignment.urlshotening.shortener;
+package com.kakaopay.recruit.assignment.urlshortening.shortener;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 import java.util.stream.LongStream;
 
 import org.junit.Test;
-import org.springframework.data.util.Pair;
 
 public class Base62URLShortenerTest {
 	private Base62URLShortener sut = new Base62URLShortener();

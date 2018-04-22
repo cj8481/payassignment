@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.sequence;
+package com.kakaopay.recruit.assignment.urlshortening.sequence;
 
 import static org.assertj.core.api.Java6Assertions.*;
 

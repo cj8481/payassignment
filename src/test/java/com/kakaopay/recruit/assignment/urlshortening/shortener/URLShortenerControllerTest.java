@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.shortener;
+package com.kakaopay.recruit.assignment.urlshortening.shortener;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

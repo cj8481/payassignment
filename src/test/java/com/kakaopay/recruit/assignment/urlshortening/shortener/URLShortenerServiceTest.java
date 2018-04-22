@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.shortener;
+package com.kakaopay.recruit.assignment.urlshortening.shortener;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -17,9 +17,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.reactivestreams.Publisher;
 
-import com.kakaopay.recruit.assignment.urlshotening.url.ReactiveShortURLRepository;
-import com.kakaopay.recruit.assignment.urlshotening.sequence.SequenceRepository;
-import com.kakaopay.recruit.assignment.urlshotening.url.ShortURL;
+import com.kakaopay.recruit.assignment.urlshortening.url.ReactiveShortURLRepository;
+import com.kakaopay.recruit.assignment.urlshortening.sequence.SequenceRepository;
+import com.kakaopay.recruit.assignment.urlshortening.url.ShortURL;
 
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;

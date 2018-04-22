@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.sequence;
+package com.kakaopay.recruit.assignment.urlshortening.sequence;
 
 import reactor.core.publisher.Mono;
 
