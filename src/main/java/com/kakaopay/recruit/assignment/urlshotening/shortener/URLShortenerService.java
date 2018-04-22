@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.kakaopay.recruit.assignment.urlshotening.url.ReactiveShortURLRepository;
-import com.kakaopay.recruit.assignment.urlshotening.url.SequenceRepository;
+import com.kakaopay.recruit.assignment.urlshotening.sequence.SequenceRepository;
 import com.kakaopay.recruit.assignment.urlshotening.url.ShortURL;
 
 import lombok.extern.slf4j.Slf4j;

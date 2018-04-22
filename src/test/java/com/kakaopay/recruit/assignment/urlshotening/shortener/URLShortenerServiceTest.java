@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.reactivestreams.Publisher;
 
 import com.kakaopay.recruit.assignment.urlshotening.url.ReactiveShortURLRepository;
-import com.kakaopay.recruit.assignment.urlshotening.url.SequenceRepository;
+import com.kakaopay.recruit.assignment.urlshotening.sequence.SequenceRepository;
 import com.kakaopay.recruit.assignment.urlshotening.url.ShortURL;
 
 import reactor.core.publisher.Mono;

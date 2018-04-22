@@ -1,4 +1,4 @@
-package com.kakaopay.recruit.assignment.urlshotening.url;
+package com.kakaopay.recruit.assignment.urlshotening.sequence;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
