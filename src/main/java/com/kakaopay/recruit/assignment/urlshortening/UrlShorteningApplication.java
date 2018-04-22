@@ -19,7 +19,7 @@ import com.mongodb.reactivestreams.client.MongoClients;
 @EnableReactiveMongoRepositories
 @EnableWebFlux
 @AutoConfigureAfter(EmbeddedMongoAutoConfiguration.class)
-public class UrlShoteningApplication extends AbstractReactiveMongoConfiguration {
+public class UrlShorteningApplication extends AbstractReactiveMongoConfiguration {
 	@Autowired
 	private Environment environment;
 
@@ -37,6 +37,6 @@ public class UrlShoteningApplication extends AbstractReactiveMongoConfiguration 
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(UrlShoteningApplication.class, args);
+		SpringApplication.run(UrlShorteningApplication.class, args);
 	}
 }
